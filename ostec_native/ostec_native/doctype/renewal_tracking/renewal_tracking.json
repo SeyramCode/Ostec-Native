@@ -1,0 +1,234 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2026-01-26 12:17:12.931160",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "section_break_tufy",
+  "series",
+  "renewal_title",
+  "customer",
+  "customer_name",
+  "renewal_type",
+  "column_break_wqsy",
+  "date",
+  "delivery_date",
+  "license_start",
+  "license_end",
+  "renewal_stage",
+  "renewal_outcome",
+  "column_break_obfa",
+  "company",
+  "customer_po",
+  "customers_po_date",
+  "account_manager",
+  "amended_from",
+  "currency_section",
+  "currency",
+  "column_break_cjpb",
+  "exchange_rate",
+  "items_section",
+  "table_cyee",
+  "totals_section",
+  "column_break_lvru",
+  "net_total_base",
+  "column_break_dtjr",
+  "net_total"
+ ],
+ "fields": [
+  {
+   "fieldname": "section_break_tufy",
+   "fieldtype": "Section Break"
+  },
+  {
+   "default": "REN-ORD-.YYYY.-",
+   "fieldname": "series",
+   "fieldtype": "Select",
+   "label": "Series",
+   "options": "REN-ORD-.YYYY.-"
+  },
+  {
+   "fieldname": "renewal_title",
+   "fieldtype": "Small Text",
+   "label": "Renewal Title"
+  },
+  {
+   "fieldname": "customer",
+   "fieldtype": "Link",
+   "label": "Customer",
+   "options": "Customer"
+  },
+  {
+   "fetch_from": "customer.customer_name",
+   "fieldname": "customer_name",
+   "fieldtype": "Data",
+   "label": "Customer Name"
+  },
+  {
+   "fieldname": "renewal_type",
+   "fieldtype": "Select",
+   "label": "Renewal Type",
+   "options": "\nHardware & Embedded\nSupport & Maintenance\nService subscription (SaaS)"
+  },
+  {
+   "fieldname": "column_break_wqsy",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "date",
+   "fieldtype": "Date",
+   "label": "Date"
+  },
+  {
+   "fieldname": "delivery_date",
+   "fieldtype": "Date",
+   "label": "Delivery Date"
+  },
+  {
+   "fieldname": "license_start",
+   "fieldtype": "Date",
+   "label": "License Start"
+  },
+  {
+   "fieldname": "license_end",
+   "fieldtype": "Date",
+   "label": "License End"
+  },
+  {
+   "fieldname": "renewal_stage",
+   "fieldtype": "Select",
+   "label": "Renewal Stage",
+   "options": "Open\nRunning\n90 days to Expiry\n60 days to Expiry\n30 days to Expiry\nExpired"
+  },
+  {
+   "fieldname": "renewal_outcome",
+   "fieldtype": "Select",
+   "label": "Renewal Outcome",
+   "options": "Not Decided\nOn Hold\nRenewed\nPartially Renewed\nTransferred\nNot Renewed\nCancelled"
+  },
+  {
+   "fieldname": "column_break_obfa",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "company",
+   "fieldtype": "Link",
+   "label": "Company",
+   "options": "Company"
+  },
+  {
+   "fieldname": "customer_po",
+   "fieldtype": "Link",
+   "label": "Customer's Purchase Order",
+   "link_filters": "[[\"Sales Order\",\"customer_name\",\"=\",\"eval:doc.customer\"]]",
+   "options": "Sales Order"
+  },
+  {
+   "fetch_from": "customer_po.po_date",
+   "fieldname": "customers_po_date",
+   "fieldtype": "Link",
+   "label": "Customer's PO Date",
+   "options": "Sales Order"
+  },
+  {
+   "fetch_from": "customer.account_manager",
+   "fieldname": "account_manager",
+   "fieldtype": "Link",
+   "label": "Account Manager",
+   "options": "User"
+  },
+  {
+   "fieldname": "amended_from",
+   "fieldtype": "Link",
+   "label": "Amended From",
+   "no_copy": 1,
+   "options": "Renewal Tracking",
+   "print_hide": 1,
+   "read_only": 1,
+   "search_index": 1
+  },
+  {
+   "fieldname": "currency_section",
+   "fieldtype": "Section Break",
+   "label": "Currency "
+  },
+  {
+   "fieldname": "currency",
+   "fieldtype": "Link",
+   "label": "Currency",
+   "options": "Currency"
+  },
+  {
+   "fieldname": "column_break_cjpb",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "exchange_rate",
+   "fieldtype": "Link",
+   "label": "Exchange Rate",
+   "options": "Currency"
+  },
+  {
+   "fieldname": "items_section",
+   "fieldtype": "Section Break",
+   "label": "Items"
+  },
+  {
+   "fieldname": "table_cyee",
+   "fieldtype": "Table",
+   "options": "Renewal Tracking Item"
+  },
+  {
+   "fieldname": "totals_section",
+   "fieldtype": "Section Break",
+   "label": "Totals"
+  },
+  {
+   "fieldname": "column_break_lvru",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "net_total_base",
+   "fieldtype": "Currency",
+   "label": "Net total (Company currency)"
+  },
+  {
+   "fieldname": "column_break_dtjr",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "net_total",
+   "fieldtype": "Data",
+   "label": "Net Total"
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "is_submittable": 1,
+ "links": [],
+ "modified": "2026-01-26 14:10:04.126708",
+ "modified_by": "Administrator",
+ "module": "Ostec Native",
+ "name": "Renewal Tracking",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "submit": 1,
+   "write": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}
