@@ -1,12 +1,13 @@
 {
  "actions": [],
  "allow_rename": 1,
+ "autoname": "naming_series: [naming_series]",
  "creation": "2026-01-26 12:17:12.931160",
  "doctype": "DocType",
  "engine": "InnoDB",
  "field_order": [
   "section_break_tufy",
-  "series",
+  "naming_series",
   "renewal_title",
   "customer",
   "customer_name",
@@ -29,7 +30,7 @@
   "column_break_cjpb",
   "exchange_rate",
   "items_section",
-  "table_cyee",
+  "items",
   "totals_section",
   "column_break_lvru",
   "net_total_base",
@@ -42,16 +43,10 @@
    "fieldtype": "Section Break"
   },
   {
-   "default": "REN-ORD-.YYYY.-",
-   "fieldname": "series",
-   "fieldtype": "Select",
-   "label": "Series",
-   "options": "REN-ORD-.YYYY.-"
-  },
-  {
    "fieldname": "renewal_title",
    "fieldtype": "Small Text",
-   "label": "Renewal Title"
+   "label": "Renewal Title",
+   "reqd": 1
   },
   {
    "fieldname": "customer",
@@ -63,7 +58,8 @@
    "fetch_from": "customer.customer_name",
    "fieldname": "customer_name",
    "fieldtype": "Data",
-   "label": "Customer Name"
+   "label": "Customer Name",
+   "read_only": 1
   },
   {
    "fieldname": "renewal_type",
@@ -88,12 +84,15 @@
   {
    "fieldname": "license_start",
    "fieldtype": "Date",
-   "label": "License Start"
+   "in_list_view": 1,
+   "label": "License Start",
+   "reqd": 1
   },
   {
    "fieldname": "license_end",
    "fieldtype": "Date",
-   "label": "License End"
+   "label": "License End",
+   "reqd": 1
   },
   {
    "fieldname": "renewal_stage",
@@ -165,19 +164,13 @@
   },
   {
    "fieldname": "exchange_rate",
-   "fieldtype": "Link",
-   "label": "Exchange Rate",
-   "options": "Currency"
+   "fieldtype": "Float",
+   "label": "Exchange Rate"
   },
   {
    "fieldname": "items_section",
    "fieldtype": "Section Break",
    "label": "Items"
-  },
-  {
-   "fieldname": "table_cyee",
-   "fieldtype": "Table",
-   "options": "Renewal Tracking Item"
   },
   {
    "fieldname": "totals_section",
@@ -191,26 +184,50 @@
   {
    "fieldname": "net_total_base",
    "fieldtype": "Currency",
-   "label": "Net total (Company currency)"
+   "label": "Net total (Company currency)",
+   "read_only": 1
   },
   {
    "fieldname": "column_break_dtjr",
    "fieldtype": "Column Break"
   },
   {
+   "default": "currency",
    "fieldname": "net_total",
    "fieldtype": "Data",
-   "label": "Net Total"
+   "label": "Net Total",
+   "read_only": 1
+  },
+  {
+   "fieldname": "items",
+   "fieldtype": "Table",
+   "label": "renewal_item",
+   "options": "Renewal Tracking Item"
+  },
+  {
+   "default": "REN-ORD-.YYYY.-",
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "hidden": 1,
+   "in_filter": 1,
+   "in_list_view": 1,
+   "in_preview": 1,
+   "in_standard_filter": 1,
+   "label": "Series",
+   "options": "REN-ORD-.YYYY.-",
+   "read_only": 1,
+   "reqd": 1
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "is_submittable": 1,
  "links": [],
- "modified": "2026-01-26 14:10:04.126708",
+ "modified": "2026-01-27 09:15:46.782774",
  "modified_by": "Administrator",
  "module": "Ostec Native",
  "name": "Renewal Tracking",
+ "naming_rule": "By \"Naming Series\" field",
  "owner": "Administrator",
  "permissions": [
   {
