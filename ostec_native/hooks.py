@@ -242,5 +242,5 @@ app_license = "mit"
 # 	"Logging DocType Name": 30  # days to retain logs
 # }
 fixtures = [
-    {"dt": "DocType", "filters": [["module", "=", "Ostec Native"]]},
+    {"doctype": "DocType", "filters": [["module", "=", "Ostec Native"]]},
 ]
