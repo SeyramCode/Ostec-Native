@@ -8,10 +8,14 @@
  "engine": "InnoDB",
  "field_order": [
   "item_code",
+  "description",
+  "qty",
   "item_name",
   "col_break12",
   "oum",
   "qty",
+  "rate",
+  "amount",
   "section_break_62",
   "brand",
   "item_group",
@@ -22,9 +26,7 @@
   "quantity_and_rate_section",
   "base_rate",
   "base_amount",
-  "column_break_17",
-  "rate",
-  "amount"
+  "column_break_17"
  ],
  "fields": [
   {

@@ -401,3 +401,46 @@ function calculate_totals(frm) {
     frm.set_value('net_total', net_total);
     frm.set_value('net_total_base', net_total_base);
 }
+    //automation of status updates
+// Copyright (c) 2026, Ostec and contributors
+// For license information, please see license.txt
+
+frappe.ui.form.on('Renewal Tracking', {
+    refresh: function(frm) {
+        validate_and_calculate(frm);
+    },
+    
+    license_start: function(frm) {
+        validate_and_calculate(frm);
+    },
+    
+    license_end: function(frm) {
+        validate_and_calculate(frm);
+    }
+});
+
+function validate_and_calculate(frm) {
+    if (!frm.doc.license_start || !frm.doc.license_end) {
+        return;
+    }
+    
+    // Validate dates
+    let license_start = frappe.datetime.str_to_obj(frm.doc.license_start);
+    let license_end = frappe.datetime.str_to_obj(frm.doc.license_end);
+    
+    if (license_end <= license_start) {
+        frappe.msgprint({
+            title: __('Invalid Dates'),
+            indicator: 'red',
+            message: __('License End Date must be after License Start Date')
+        });
+        frm.set_value('license_end', '');
+        return;
+    }
+    
+    // Calculate days remaining
+    let today = frappe.datetime.get_today();
+    let days_remaining = frappe.datetime.get_day_diff(frm.doc.license_end, today);
+    frm.set_value('days_remaining', days_remaining);
+}
+

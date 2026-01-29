@@ -244,3 +244,20 @@ app_license = "mit"
 fixtures = [
     {"doctype": "DocType", "filters": [["module", "=", "Ostec Native"]]},
 ]
+
+#hooks for automations
+# Scheduled Tasks
+# ---------------
+
+scheduler_events = {
+    # Heavy job at 2 AM - processes ALL records
+    "cron": {
+        "0 2 * * *": [
+            "ostec_native.ostec_native.doctype.renewal_tracking.renewal_tracking.update_all_renewal_stages_heavy"
+        ],
+        # Light job at 2 PM - processes only critical/recent records
+        "0 14 * * *": [
+            "ostec_native.ostec_native.doctype.renewal_tracking.renewal_tracking.update_all_renewal_stages_light"
+        ]
+    }
+}
